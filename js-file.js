@@ -13,7 +13,7 @@ function searchWeather() {
 
 async function getWeather(city) {
   const response = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=adb02dc87b0340ae06c3cdb88d6233b5`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=adb02dc87b0340ae06c3cdb88d6233b5`,
     { mode: "cors" }
   );
   return await response.json();
@@ -28,7 +28,6 @@ function displayWeather(city) {
   let cityDesc = document.createElement("div");
 
   getWeather(city).then((weather) => {
-    console.log(weather);
     cityName.textContent = weather.name;
     cityTemp.textContent =
       Math.round(1.8 * (+weather.main.temp - 273) + 32) + "°";
